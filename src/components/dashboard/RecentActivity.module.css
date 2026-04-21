@@ -1,0 +1,36 @@
+/*
+ * Styles for the RecentActivity dashboard widget — lists the last five
+ * quiz attempts with module name, date, score, and star rating.
+ */
+
+/* ── Section wrapper ───────────────────────────────────────────────────────── */
+
+/* Standalone glass-card panel — slight purple tint like the left card */
+.activitySection {
+  background: rgba(245, 243, 255, 0.85);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  padding: 28px 32px;
+  box-shadow: var(--card-shadow);
+}
+
+.activitySection h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* ── Activity item ─────────────────────────────────────────────────────────── */
+
+/* Each row shows one quiz attempt — coloured left border for visual rhythm */
+.activityItem {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-blue);
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,275 @@
+/*
+ * Styles for the Profile page — lets a user view and edit their name, email,
+ * and chosen avatar icon. Includes a modal for picking from preset icons.
+ */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #bfdbfe 100%);
+  padding: 30px;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #f0f0f8;
+  border-radius: 24px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Profile icon ─────────────────────────────────────────── */
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profileIcon {
+  width: 100px;
+  height: 100px;
+  background: #e8e8f4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  padding: 18px;
+  transition: transform 0.2s ease;
+}
+
+.profileIcon:hover {
+  transform: scale(1.05);
+}
+
+.profileIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Small blue edit pencil badge on the avatar */
+.editBadge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  background: #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profileLabel {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #d1d5db;
+  margin: 0 0 30px 0;
+}
+
+/* ── Form ─────────────────────────────────────────────────── */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: #ffffff;
+  color: #1e293b;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.field input::placeholder {
+  color: #94a3b8;
+}
+
+.field input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Email field is read-only — show it greyed out so users know it can't be edited */
+.field input.readOnly {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: default;
+}
+
+/* ── Feedback messages ────────────────────────────────────── */
+.error {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success {
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.cancelBtn {
+  padding: 14px 35px;
+  border-radius: 25px;
+  border: 2px solid #e2e8f0;
+  background: white;
+  color: #64748b;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+  background: #f8fafc;
+  border-color: #9ca3af;
+}
+
+.saveBtn {
+  padding: 13px 35px;
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+  transition: all 0.2s ease;
+}
+
+.saveBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+}
+
+.saveBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Icon picker modal ────────────────────────────────────── */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modalContent h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e293b;
+}
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Each preset avatar option shown in the grid */
+.iconOption {
+  aspect-ratio: 1;
+  background: #f8fafc;
+  border: 3px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.iconOption:hover {
+  background: #f1f5f9;
+  transform: scale(1.05);
+}
+
+/* Blue highlight for the currently selected icon */
+.iconOption.selected {
+  border-color: #3b82f6;
+  background: #dbeafe;
+}
+
+.iconOption img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page { padding: 15px; }
+  .formGrid { grid-template-columns: 1fr; }
+  .buttonGroup { flex-direction: column; align-items: stretch; }
+  .cancelBtn, .saveBtn { text-align: center; }
+}

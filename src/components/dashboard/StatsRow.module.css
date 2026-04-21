@@ -1,0 +1,52 @@
+/*
+ * Styles for the StatsRow dashboard widget — four summary cards across
+ * the top showing modules completed, average score, total stars, and streak.
+ */
+
+/* ── Layout ────────────────────────────────────────────────────────────────── */
+
+/* Four stat cards side by side; stacks to two columns on small screens */
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Stat card ─────────────────────────────────────────────────────────────── */
+
+/* Each card has a soft purple tint matching the page gradient palette */
+.statCard {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid #ddd6fe;
+  border-radius: 14px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+/* The big number — uses the brand purple to stand out */
+.value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-purple);
+  line-height: 1;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}

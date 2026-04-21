@@ -1,0 +1,46 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESIGN TOKENS
+   All shared colours, shadows, and radii are defined here as CSS variables.
+   Change a value once and every page that uses it updates automatically.
+───────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Page background — the purple-to-blue gradient used on every screen */
+  --gradient-bg: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #bfdbfe 100%);
+
+  /* Glass card — a frosted-white panel that sits on top of the gradient */
+  --card-bg:     rgba(255, 255, 255, 0.8);
+  --card-blur:   blur(10px);
+  --card-radius: 20px;
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  /* Typography — three levels of text darkness */
+  --text-primary:   #1e293b; /* headings and important labels */
+  --text-secondary: #475569; /* body text */
+  --text-muted:     #64748b; /* captions, meta, placeholder text */
+
+  /* Surfaces and borders */
+  --border:  #e2e8f0; /* subtle divider lines */
+  --surface: #f8fafc; /* off-white background for nested elements */
+
+  /* Brand accent colours */
+  --accent-purple: #6366f1;
+  --accent-blue:   #3b82f6;
+  --accent-green:  #22c55e;
+  --accent-red:    #ef4444;
+  --accent-amber:  #f59e0b;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESET
+   Remove browser default spacing so every element starts from a clean slate.
+───────────────────────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+}

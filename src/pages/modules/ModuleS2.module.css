@@ -1,0 +1,326 @@
+/*
+ * Styles for ScrollPlayer — the social-media scroll module. Includes the
+ * phone mockup, post / DM / profile content variants, Looks-Safe /
+ * Looks-Suspicious action buttons, and the feedback panel with tips.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 20px;
+}
+
+/* ── Game container ──────────────────────────────────────────────────────── */
+
+/* White glass card that holds the phone mockup and question section */
+.gameContainer {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: var(--card-blur);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: var(--card-shadow);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Score ───────────────────────────────────────────────────────────────── */
+
+.scoreDisplay {
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Live score number highlighted in the brand purple */
+.scoreNumber {
+  color: var(--accent-purple);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ── Phone mockup ────────────────────────────────────────────────────────── */
+
+/* Dark phone frame that displays the social-media scenario inside */
+.phoneMockup {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-radius: 35px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Notch at the top of the phone */
+.phoneNotch {
+  width: 120px;
+  height: 25px;
+  background: #0f172a;
+  border-radius: 0 0 15px 15px;
+  margin: 0 auto 10px;
+}
+
+/* White screen area inside the phone */
+.phoneScreen {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  min-height: 500px;
+}
+
+/* ── Post content ────────────────────────────────────────────────────────── */
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.postAvatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #a78bfa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.postInfo { flex: 1; }
+.postUsername { font-weight: bold; color: var(--text-primary); font-size: 15px; }
+.postTime { font-size: 12px; color: var(--text-muted); }
+
+.postContent {
+  margin-bottom: 15px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.postImage {
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.postActions {
+  display: flex;
+  gap: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── DM content ──────────────────────────────────────────────────────────── */
+
+.dmContainer {
+  background: var(--surface);
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.dmHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dmAvatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.dmSender { font-weight: bold; font-size: 14px; color: var(--text-primary); }
+
+.dmMessage {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* ── Profile content ─────────────────────────────────────────────────────── */
+
+.profileHeader { text-align: center; }
+
+.profileAvatarLarge {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto 10px;
+}
+
+.profileUsername { font-weight: bold; font-size: 18px; color: var(--text-primary); }
+.profileBio { font-size: 13px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+
+/* ── Question section ────────────────────────────────────────────────────── */
+
+/* Light section below the phone holding the question and action buttons */
+.questionSection {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.questionTitle {
+  font-size: 18px;
+  color: var(--text-primary);
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.actionButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* Each action card — white with a subtle border */
+.actionBtn {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Button turns green when the user selects the correct answer */
+.actionBtn.selectedCorrect {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border-color: #16a34a;
+}
+
+/* Button turns red for a wrong selection */
+.actionBtn.selectedWrong {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #dc2626;
+}
+
+.actionIcon { font-size: 36px; }
+.actionLabel { font-size: 16px; font-weight: bold; text-align: center; color: var(--text-primary); }
+.actionDesc { font-size: 12px; color: var(--text-muted); text-align: center; }
+
+/* ── Feedback ────────────────────────────────────────────────────────────── */
+
+/* Revealed after the user picks an action */
+.feedback {
+  border-radius: 20px;
+  padding: 25px;
+  margin-top: 20px;
+  animation: slideIn 0.4s ease;
+}
+
+.feedback.correct {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border: 3px solid var(--accent-green);
+}
+
+.feedback.incorrect {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 3px solid var(--accent-red);
+}
+
+.feedbackTitle { font-size: 20px; font-weight: bold; color: var(--text-primary); margin-bottom: 12px; }
+.feedbackText { font-size: 15px; line-height: 1.7; color: var(--text-primary); margin-bottom: 15px; }
+
+.tipsBox {
+  background: rgba(99, 102, 241, 0.08);
+  border-left: 4px solid var(--accent-purple);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.tipsTitle { font-weight: bold; color: var(--accent-purple); margin-bottom: 8px; font-size: 14px; }
+.tipsList { list-style: none; padding: 0; }
+.tipsList li { padding: 4px 0; color: var(--text-primary); font-size: 14px; }
+.tipsList li::before { content: '💡 '; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 14px 35px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Purple "next" button */
+.btnPrimary {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btnPrimary:hover { transform: translateY(-2px); }
+
+/* Green "finish" button on the last scenario */
+.btnSuccess {
+  background: linear-gradient(135deg, var(--accent-green) 0%, #16a34a 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.btn:disabled { background: var(--border); cursor: not-allowed; box-shadow: none; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .gameContainer { padding: 20px; }
+  .actionButtons { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,340 @@
+/*
+ * Styles for PasswordGamePlayer — the drag-key padlock game. Covers the
+ * padlock drop zone (with open / shake states), the draggable key cards,
+ * and the result banner + explanation shown after each answer.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+/* Full-screen background using the app's standard gradient */
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 0;
+}
+
+/* ── Game container ──────────────────────────────────────────────────────── */
+
+/* Centres the game content and limits its width */
+.gameContainer {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px 24px 40px;
+}
+
+/* ── Score ───────────────────────────────────────────────────────────────── */
+
+.scoreDisplay {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* The live score number is highlighted in the brand purple */
+.scoreNumber {
+  color: var(--accent-purple);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+/* ── Question card ───────────────────────────────────────────────────────── */
+
+/* White glass card holding the current question */
+.questionCard {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--card-radius);
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Italic scenario text shown above the question */
+.scenarioBox {
+  background: #ede9fe;
+  border-left: 4px solid var(--accent-purple);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  color: #4338ca;
+  font-size: 0.875rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.questionText {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+/* ── Padlock drop zone ───────────────────────────────────────────────────── */
+
+/* The user drags a key card here to answer the question */
+.padlockZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px;
+  margin: 0 auto 28px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 3px dashed rgba(99, 102, 241, 0.3);
+  border-radius: 28px;
+  max-width: 180px;
+  cursor: default;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+/* When a key is dragged over — highlights the zone in amber to match the key */
+.padlockZone.draggingOver {
+  border-color: var(--accent-amber);
+  background: rgba(245, 158, 11, 0.08);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.padlockEmoji {
+  font-size: 4.5rem;
+  line-height: 1;
+  display: block;
+}
+
+/* Correct drop — padlock pops open with a satisfying animation */
+.padlockOpen .padlockEmoji {
+  animation: popOpen 0.5s ease forwards;
+}
+
+/* Wrong drop — padlock shakes to signal the mistake */
+.padlockShake .padlockEmoji {
+  animation: shake 0.45s ease;
+}
+
+@keyframes popOpen {
+  0%   { transform: scale(1) rotate(0deg); }
+  40%  { transform: scale(1.35) rotate(-12deg); }
+  70%  { transform: scale(1.2) rotate(6deg); }
+  100% { transform: scale(1.1) rotate(0deg); }
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  15%     { transform: translateX(-10px) rotate(-4deg); }
+  30%     { transform: translateX(10px)  rotate(4deg); }
+  50%     { transform: translateX(-8px)  rotate(-3deg); }
+  70%     { transform: translateX(8px)   rotate(3deg); }
+  85%     { transform: translateX(-4px); }
+}
+
+/* "Drop key here" label — muted purple while waiting */
+.padlockLabel {
+  font-size: 0.7rem;
+  color: rgba(99, 102, 241, 0.45);
+  margin-top: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* Label turns green when the correct key is dropped */
+.padlockOpen .padlockLabel {
+  color: var(--accent-green);
+  opacity: 1;
+}
+
+/* Label turns red when the wrong key is dropped */
+.padlockShake .padlockLabel {
+  color: var(--accent-red);
+  opacity: 1;
+}
+
+/* ── Keys container ──────────────────────────────────────────────────────── */
+
+/* Two-column grid of draggable key cards */
+.keysContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* ── Individual key card ─────────────────────────────────────────────────── */
+
+/* Neutral grey key cards — the draggable answer options */
+.keyCard {
+  background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+  border: 2px solid #94a3b8;
+  border-radius: 16px;
+  padding: 16px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: grab;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+  user-select: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  box-shadow: 0 4px 14px rgba(148, 163, 184, 0.25), inset 0 1px 0 rgba(255,255,255,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Moving shine effect sweeps across the key on hover */
+.keyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.4s;
+}
+
+.keyCard:hover:not(.keyCorrect):not(.keyWrong):not(.keyNeutral)::before {
+  left: 130%;
+}
+
+.keyCard:hover:not(.keyCorrect):not(.keyWrong):not(.keyNeutral) {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.keyCard:active:not(.keyCorrect):not(.keyWrong):not(.keyNeutral) {
+  cursor: grabbing;
+  transform: scale(0.96);
+}
+
+/* Dims the key that is currently being dragged */
+.keyDragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+/* Correct answer — key turns green and pops */
+.keyCorrect {
+  background: linear-gradient(135deg, var(--accent-green) 0%, #16a34a 100%);
+  border-color: #16a34a;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.4);
+  cursor: default;
+  animation: keyPop 0.35s ease;
+}
+
+/* Wrong answer — key turns red and fades slightly */
+.keyWrong {
+  background: linear-gradient(135deg, var(--accent-red) 0%, #dc2626 100%);
+  border-color: #dc2626;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+  cursor: default;
+  opacity: 0.65;
+}
+
+/* Neutral keys — not selected and not the answer (light grey on light bg) */
+.keyNeutral {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+  cursor: default;
+}
+
+@keyframes keyPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.keyIcon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.keyText {
+  flex: 1;
+}
+
+/* ── Result banner ───────────────────────────────────────────────────────── */
+
+/* Full-width feedback strip shown after answering */
+.resultBanner {
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.resultCorrect {
+  background: #dcfce7;
+  border: 1.5px solid #86efac;
+  color: #15803d;
+}
+
+.resultWrong {
+  background: #fee2e2;
+  border: 1.5px solid #fca5a5;
+  color: #b91c1c;
+}
+
+/* ── Explanation ─────────────────────────────────────────────────────────── */
+
+/* Box shown after answering with context about why the answer is correct */
+.explanation {
+  background: #ede9fe;
+  border-left: 4px solid var(--accent-purple);
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.explanationTitle {
+  font-weight: 700;
+  color: var(--accent-purple);
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Button ──────────────────────────────────────────────────────────────── */
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Neutral grey "Next question" button for the password modules */
+.nextBtn {
+  background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 28px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 4px 14px rgba(100, 116, 139, 0.3);
+  letter-spacing: -0.01em;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.nextBtn:active {
+  transform: translateY(0);
+}

@@ -1,0 +1,221 @@
+/*
+ * Styles for the Register page — account creation form with name, email,
+ * password, and a role-selector pill group (Student / General / Professional).
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.body {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ── Register card ─────────────────────────────────────────────────────────── */
+
+.signupContainer {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+/* Logo placed in the top-right corner of the card */
+.shieldLogo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.shieldLogo img {
+  width: 70px;
+}
+
+/* ── Form layout ───────────────────────────────────────────────────────────── */
+
+h1 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Two fields side by side on wider screens */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+/* ── Inputs ────────────────────────────────────────────────────────────────── */
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='tel'] {
+  padding: 12px 16px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  font-size: 14px;
+  background: white;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent-blue);
+}
+
+.passwordHint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ── Content preference checkboxes ────────────────────────────────────────── */
+
+.tailoredContent {
+  margin-bottom: 20px;
+}
+
+.contentOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  margin-top: 8px;
+}
+
+.contentOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.contentOption:hover {
+  background: var(--surface);
+}
+
+/* ── Avatar icon picker ────────────────────────────────────────────────────── */
+
+.iconSelection {
+  margin-bottom: 20px;
+}
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  margin-top: 8px;
+}
+
+.iconOption {
+  aspect-ratio: 1;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.iconOption:hover {
+  background: var(--border);
+  transform: scale(1.05);
+}
+
+/* Blue ring when an icon is selected */
+.iconOption.selected {
+  border-color: var(--accent-blue);
+  background: #dbeafe;
+}
+
+.iconOption img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Submit button ─────────────────────────────────────────────────────────── */
+
+.doneButton {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-green);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.doneButton:hover {
+  background: #16a34a;
+}
+
+.doneButton:active {
+  transform: scale(0.98);
+}
+
+/* ── Login link ────────────────────────────────────────────────────────────── */
+
+.loginLink {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.loginLink a {
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .iconGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,225 @@
+/*
+ * Styles for the LearningJourney dashboard widget — the checklist of
+ * recommended modules for the student's role, with their progress status.
+ */
+
+/* ── Section wrapper ───────────────────────────────────────────────────────── */
+
+/* Sits inside the parent glass card — no background of its own */
+.section {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+/* Title row: "Your Learning Journey" on the left, percentage on the right */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Live completion percentage — highlighted in the brand purple */
+.pctLabel {
+  font-size: 13px;
+  color: var(--accent-purple);
+  font-weight: 600;
+}
+
+/* ── Progress bar ──────────────────────────────────────────────────────────── */
+
+.barTrack {
+  width: 100%;
+  height: 10px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* The filled portion — animates smoothly when the percentage changes */
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, #a5b4fc 0%, var(--accent-purple) 100%);
+  border-radius: 99px;
+  transition: width 1s ease;
+  min-width: 4px;
+}
+
+/* ── Milestone markers ─────────────────────────────────────────────────────── */
+
+/* Row of evenly spaced milestone ticks below the bar */
+.milestones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.milestoneLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Personalised path section ─────────────────────────────────────────────── */
+
+/* Container that sits below the overall progress bar */
+.pathSection {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--border);
+}
+
+/* Header row: role label on the left, "x / y done" on the right */
+.pathHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.pathTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Small count badge — uses the same purple as the overall % label */
+.pathCount {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-purple);
+  background: rgba(139, 92, 246, 0.1);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Short description text below the role label */
+.pathDescription {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+/* Thin progress bar specific to the path */
+.pathBarTrack {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+/* Filled portion — green gradient to feel different from the purple overall bar */
+.pathBarFill {
+  height: 100%;
+  background: linear-gradient(90deg, #6ee7b7 0%, #10b981 100%);
+  border-radius: 99px;
+  transition: width 1s ease;
+  min-width: 4px;
+}
+
+/* Remove default list bullets and padding */
+.pathList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Each module row in the checklist */
+.pathItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+
+/* The ✅ / ⭕ icon — no extra styling needed, emoji handles it */
+.tickDone,
+.tickTodo {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Module icon (e.g. 🛡️) */
+.pathModuleIcon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Module title — normal weight when not yet done */
+.pathModuleTitle {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+/* Module title — slightly faded when completed */
+.pathModuleTitleDone {
+  flex: 1;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: #10b981;
+}
+
+/* "Start →" link — takes the user directly to the module */
+.startLink {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-purple);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--accent-purple);
+  transition: background 0.2s;
+}
+
+.startLink:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Small green "Done!" badge shown after a module is complete */
+.doneBadge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+/* Banner shown when the user has finished every module in their path */
+.completedMessage {
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid #10b981;
+  color: #10b981;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}

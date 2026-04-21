@@ -1,0 +1,111 @@
+/*
+ * Styles for the AchievementBadges dashboard widget — a grid of earned
+ * and locked badges for each module, with a count showing overall progress.
+ */
+
+/* ── Section wrapper ───────────────────────────────────────────────────────── */
+
+/* Standalone glass-card panel — slight purple tint like the left card */
+.section {
+  background: rgba(245, 243, 255, 0.85);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  padding: 28px 32px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* ── Star grid ─────────────────────────────────────────────────────────────── */
+
+/* 4-column grid of star icons — one per module */
+.stars {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px 8px;
+  margin: 16px 0;
+}
+
+/* Each star sits above its module label */
+.starContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Unearned star — light grey so it's still visible on a white background */
+.star {
+  font-size: 46px;
+  color: var(--border);
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+/* Earned star — glows amber and pulses gently to celebrate the achievement */
+.star.earned {
+  color: var(--accent-amber);
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
+  animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.08); }
+}
+
+/* Module name shown below each star */
+.starLabel {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* ── Overall progress bar ──────────────────────────────────────────────────── */
+
+/* Shows how many stars the user has earned out of the total */
+.progressBar {
+  width: 100%;
+  height: 12px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #a5b4fc 0%, var(--accent-purple) 100%);
+  transition: width 1s ease;
+  border-radius: 10px;
+}
+
+.progressText {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+/* ── Achievement hint ──────────────────────────────────────────────────────── */
+
+/* Small info box reminding the user how to earn stars */
+.achievementText {
+  font-size: 14px;
+  text-align: center;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+}

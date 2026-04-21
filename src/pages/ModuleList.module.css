@@ -1,0 +1,126 @@
+/*
+ * Styles for the ModuleList page — shows all available learning modules
+ * grouped by category, each with an icon card, title, description, and
+ * difficulty badge (Beginner / Intermediate / Advanced).
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 30px;
+}
+
+/* ── Category container ────────────────────────────────────────────────────── */
+
+/* Glass card that holds all the module cards for one category */
+.container {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+.category {
+  margin-bottom: 40px;
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+
+/* ── Module grid ───────────────────────────────────────────────────────────── */
+
+/* Three cards per row on desktop */
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Individual module card */
+.moduleCard {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 2px solid transparent;
+}
+
+/* Card lifts and gains a purple border on hover */
+.moduleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  border-color: #a5b4fc;
+}
+
+.moduleIcon {
+  font-size: 36px;
+}
+
+.moduleTitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.moduleDescription {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── Difficulty badges ─────────────────────────────────────────────────────── */
+
+.moduleBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+.beginner {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: #15803d;
+}
+
+.intermediate {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+}
+
+.advanced {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .modulesGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .page { padding: 15px; }
+  .modulesGrid { grid-template-columns: 1fr; }
+}

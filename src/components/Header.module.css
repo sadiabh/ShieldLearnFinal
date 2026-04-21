@@ -1,0 +1,111 @@
+/*
+ * Styles for the Header component — the frosted-glass bar at the top of
+ * every logged-in page, containing the logo, page title, nav buttons,
+ * and a logout button.
+ */
+
+/* ── Header bar ────────────────────────────────────────────────────────────── */
+
+/* Frosted-glass bar sitting at the top of every page */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: var(--card-blur);
+  padding: 20px 30px;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+.header h1 {
+  font-size: 32px;
+  color: var(--text-primary);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Centre group holding the page title and welcome message */
+.titleGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ── Navigation buttons ────────────────────────────────────────────────────── */
+
+.nav {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Pill-shaped navigation button — light indigo gradient */
+.navBtn {
+  background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.navBtn:hover {
+  background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Active page button is filled with the brand purple */
+.navBtn.active {
+  background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+  color: #fff;
+}
+
+/* Logout button uses a soft red to signal a destructive action */
+.logoutBtn {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+}
+
+.logoutBtn:hover {
+  background: linear-gradient(135deg, #fecaca 0%, #f87171 100%);
+  color: #fff;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+}

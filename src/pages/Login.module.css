@@ -1,0 +1,125 @@
+/*
+ * Styles for the Login page — centred card with email/password inputs,
+ * a purple "Sign In" button and a link over to Register.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.body {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ── Login card ────────────────────────────────────────────────────────────── */
+
+.loginContainer {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+}
+
+/* Logo placed in the top-right corner of the card */
+.shieldLogo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.shieldLogo img {
+  width: 70px;
+}
+
+/* ── Unlock animation ──────────────────────────────────────────────────────── */
+
+.unlockContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+/* The padlock image scales up briefly when the user submits the form */
+.lockIcon {
+  width: 160px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.animate {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+/* ── Form fields ───────────────────────────────────────────────────────────── */
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* Blue ring when the field is focused */
+.inputGroup input:focus {
+  border-color: var(--accent-blue);
+}
+
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 14px;
+  align-items: center;
+}
+
+/* "Forgot password" link in red to stand out */
+.forgotLink {
+  color: var(--accent-red);
+  text-decoration: none;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+
+.loginButton {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent-blue);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.loginButton:hover {
+  background: #1d4ed8;
+}
+
+/* ── Register link ─────────────────────────────────────────────────────────── */
+
+.registerLink {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.registerLink a {
+  color: var(--accent-blue);
+  font-weight: 600;
+  text-decoration: none;
+}

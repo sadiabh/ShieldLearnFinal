@@ -1,0 +1,385 @@
+/*
+ * Styles for the HowTo page — a standalone guide shown to new visitors and
+ * to users who have just registered. Uses plain CSS (not a CSS module) so
+ * every selector here is global; keep class names distinct from other pages.
+ */
+
+.body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #bfdbfe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  position: relative;
+}
+
+.shieldLogo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.shieldLogo img {
+  width: 70px;
+}
+
+h1 {
+  font-size: 1.3rem;
+  color: #1e293b;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.sectionHeader {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btnPrimary {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.btnPrimary:hover { background: #1d4ed8; }
+
+.btnSecondary {
+  display: block;
+  text-align: center;
+  padding: 14px;
+  background: transparent;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-decoration: none;
+  border: 2px solid #2563eb;
+  transition: background 0.2s;
+}
+
+.btnSecondary:hover { background: #eff6ff; }
+
+/* Dashboard button — shown after registration so it needs to stand out clearly
+   against the white card and the purple page background */
+.btnDashboard {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 9999px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btnDashboard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(16, 185, 129, 0.5);
+}
+
+/* Forum post styles */
+.forumPost {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid #3b82f6;
+}
+
+.postAuthor {
+  font-size: 12px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 4px;
+}
+
+.postTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.postBody {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.excerpt {
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* ── Getting started steps ──────────────────────────────────────────────── */
+
+/* Remove default list number and add custom icon layout */
+.stepList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.stepIcon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Role path cards ─────────────────────────────────────────────────────── */
+
+.roleCard {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.roleTitle {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Remove default bullet from module list inside role cards */
+.moduleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.moduleItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Small coloured dot before each module name */
+.moduleDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* "Foundation" pill shown next to the first module in each path */
+.foundationTag {
+  font-size: 10px;
+  font-weight: 700;
+  background: #fef9c3;
+  color: #a16207;
+  padding: 1px 7px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+/* ── Module type grid ────────────────────────────────────────────────────── */
+
+.typeGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.typeItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.typeItem p {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+}
+
+.typeIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* ── Star tier table ─────────────────────────────────────────────────────── */
+
+.starTiers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.starRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #fefce8;
+  border-radius: 8px;
+  border: 1px solid #fde68a;
+}
+
+.starDisplay {
+  font-size: 16px;
+  letter-spacing: 2px;
+  flex-shrink: 0;
+  width: 56px;
+}
+
+.starThreshold {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  flex: 1;
+}
+
+.starLabel {
+  font-size: 12px;
+  color: #92400e;
+  font-weight: 600;
+}
+
+/* ── AL chatbot box ──────────────────────────────────────────────────────── */
+
+.alBox {
+  background: linear-gradient(135deg, #ede9fe, #dbeafe);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #c4b5fd;
+}
+
+.alBox p {
+  font-size: 14px;
+  color: #3730a3;
+}
+
+/* Example question chips for the AL section */
+.alExamples {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alExamples li {
+  font-size: 13px;
+  font-style: italic;
+  color: #4338ca;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 6px;
+  border-left: 3px solid #7c3aed;
+}
+
+/* ── Dashboard feature list ──────────────────────────────────────────────── */
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.featureItem p {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+}
+
+.featureIcon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .container { grid-template-columns: 1fr; }
+}

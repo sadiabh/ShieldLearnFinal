@@ -1,0 +1,364 @@
+/*
+ * Styles for the Forum page — a simple community feed where students can
+ * post, like, comment, and filter by category or "my posts".
+ */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #bfdbfe 100%);
+  padding: 30px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 260px;
+  gap: 25px;
+  min-height: calc(100vh - 180px);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  color: #1e293b;
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.sidebarItem:hover {
+  background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+  color: #1e293b;
+  transform: translateX(3px);
+}
+
+.sidebarItem.active {
+  background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+  color: #1e40af;
+}
+
+.sidebarBadge {
+  background: #3b82f6;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 2px 7px;
+  margin-left: auto;
+}
+
+.sidebarDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Feed */
+.feedHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.newPostBtn {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newPostBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  background: rgba(226, 232, 240, 0.5);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 18px;
+  width: fit-content;
+}
+
+.tab {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab.activeTab {
+  background: #fff;
+  color: #1e40af;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Composer */
+.composer {
+  background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+  border: 2px solid #93c5fd;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.composer input,
+.composer textarea {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 12px;
+  color: #1e293b;
+  font-size: 13px;
+  padding: 10px 14px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+
+.composer input:focus,
+.composer textarea:focus {
+  border-color: #60a5fa;
+}
+
+.composerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btnGhost {
+  background: #fff;
+  border: 1.5px solid #bfdbfe;
+  color: #475569;
+  border-radius: 12px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnGhost:hover { background: #f1f5f9; }
+
+.btnPrimary {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(59, 130, 246, 0.35);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Category dropdown inside the composer */
+.categorySelect {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid #bfdbfe;
+  border-radius: 12px;
+  color: #1e293b;
+  font-size: 13px;
+  padding: 10px 14px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.categorySelect:focus {
+  border-color: #60a5fa;
+}
+
+/* Status messages — loading, error, empty state */
+.statusMsg {
+  text-align: center;
+  padding: 24px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Pinned post — stands out with a purple tint and left border */
+.pinnedCard {
+  border-color: #a5b4fc !important;
+  background: linear-gradient(135deg, rgba(238, 242, 255, 0.95) 0%, rgba(245, 243, 255, 0.95) 100%) !important;
+}
+
+/* Small "📌 Pinned" label shown next to the author name */
+.pinnedBadge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #ede9fe;
+  color: #5b21b6;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+/* Post cards */
+.postCard {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid #e0e7ff;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.postCard:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.12);
+}
+
+.postAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.postAuthor {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.postTime {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.postCategory {
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.postTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.postBody {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.postActions {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Articles */
+.articleCard {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.articleBadge {
+  font-size: 11px;
+  font-weight: 700;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 3px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.articleTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.articleExcerpt {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; }
+}

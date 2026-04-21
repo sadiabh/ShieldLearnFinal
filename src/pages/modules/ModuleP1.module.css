@@ -1,0 +1,250 @@
+/*
+ * Styles for HealthcarePlayer — the NHS clinical-decision module. Includes
+ * the badge header, scenario context box, interaction card, comply/refuse
+ * action buttons, and the clinical-insights feedback panel.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+/* Uses the standard app gradient — consistent with all other module pages */
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 20px;
+}
+
+/* ── Game container ──────────────────────────────────────────────────────── */
+
+/* White glass card holding the hospital scenario */
+.gameContainer {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: var(--card-blur);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: var(--card-shadow);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── Score ───────────────────────────────────────────────────────────────── */
+
+.scoreDisplay {
+  text-align: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Live score number highlighted in the brand purple */
+.scoreNumber { color: var(--accent-purple); font-size: 24px; font-weight: bold; }
+
+/* ── Hospital badge header ───────────────────────────────────────────────── */
+
+/* Blue NHS-style banner at the top of each scenario */
+.badgeHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.hospitalLogo {
+  font-size: 50px;
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeTitle { font-size: 20px; font-weight: bold; }
+.badgeSubtitle { font-size: 14px; opacity: 0.8; }
+
+/* ── Scenario context box ────────────────────────────────────────────────── */
+
+/* Describes the clinical situation the user is in */
+.contextBox {
+  background: #f0f9ff;
+  border: 2px solid #bae6fd;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.contextLabel { font-weight: bold; color: #0284c7; margin-bottom: 10px; font-size: 15px; }
+.contextText { color: var(--text-primary); line-height: 1.7; font-size: 15px; }
+
+/* ── Interaction box ─────────────────────────────────────────────────────── */
+
+/* Shows who is contacting the user and how */
+.interactionBox {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.interactionMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.interactionIcon { font-size: 24px; }
+.interactionFrom { font-weight: bold; color: var(--text-primary); font-size: 15px; }
+.interactionVia {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.interactionMessage {
+  font-style: italic;
+  color: #334155;
+  line-height: 1.6;
+  font-size: 16px;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+}
+
+/* ── Question ────────────────────────────────────────────────────────────── */
+
+.questionText {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ── Action buttons ──────────────────────────────────────────────────────── */
+
+/* Two choices: proceed safely, or report/refuse */
+.actionButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.actionBtn {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.actionBtn.selectedCorrect {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border-color: #16a34a;
+}
+
+.actionBtn.selectedWrong {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border-color: #dc2626;
+}
+
+.actionIcon { font-size: 36px; }
+.actionLabel { font-size: 16px; font-weight: bold; color: var(--text-primary); text-align: center; }
+
+/* ── Feedback ────────────────────────────────────────────────────────────── */
+
+.feedback {
+  border-radius: 20px;
+  padding: 25px;
+  animation: slideIn 0.4s ease;
+}
+
+.feedback.correct {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border: 3px solid var(--accent-green);
+}
+
+.feedback.incorrect {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 3px solid var(--accent-red);
+}
+
+.feedbackTitle { font-size: 20px; font-weight: bold; color: var(--text-primary); margin-bottom: 12px; }
+.feedbackText { font-size: 15px; line-height: 1.7; color: var(--text-primary); margin-bottom: 15px; }
+
+/* Clinical insights box */
+.insightsBox {
+  background: rgba(2, 132, 199, 0.08);
+  border-left: 4px solid #0284c7;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.insightsTitle { font-weight: bold; color: #0369a1; margin-bottom: 8px; font-size: 14px; }
+.insightsList { list-style: none; padding: 0; }
+.insightsList li { padding: 4px 0; color: var(--text-primary); font-size: 14px; }
+.insightsList li::before { content: '🏥 '; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Navigation ──────────────────────────────────────────────────────────── */
+
+.buttonContainer { display: flex; justify-content: center; margin-top: 25px; }
+
+.btn {
+  padding: 14px 35px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Purple "next" button — matches the app's brand colour */
+.btnPrimary {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #4f46e5 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btnPrimary:hover { transform: translateY(-2px); }
+
+/* Green "finish" button on the last scenario */
+.btnSuccess {
+  background: linear-gradient(135deg, var(--accent-green) 0%, #16a34a 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+.btn:disabled { background: var(--border); cursor: not-allowed; box-shadow: none; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .gameContainer { padding: 20px; }
+  .actionButtons { grid-template-columns: 1fr; }
+}

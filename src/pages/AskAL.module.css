@@ -1,0 +1,251 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   AskAL.module.css  —  Styles for the AI chatbot page
+   Uses the same design tokens (CSS variables) as the rest of ShieldLearn.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Full-page wrapper — applies the purple gradient background */
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 20px;
+}
+
+/* Centred content column */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Title row ───────────────────────────────────────────────────────────── */
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  font-size: 48px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ── "How it works" info card ────────────────────────────────────────────── */
+
+.infoCard {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px 24px;
+  border-left: 4px solid var(--accent-purple);
+}
+
+.infoCard h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-purple);
+  margin-bottom: 8px;
+}
+
+.infoCard p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.infoCard ol {
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.infoCard code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--accent-purple);
+}
+
+/* ── Chat window ─────────────────────────────────────────────────────────── */
+
+.chatBox {
+  background: var(--card-bg);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  height: 400px;
+  overflow-y: auto;       /* Scroll when messages overflow */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Message bubbles ─────────────────────────────────────────────────────── */
+
+/* Base bubble style shared by both sides */
+.userBubble,
+.alBubble {
+  max-width: 75%;
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* User bubble — right-aligned, purple */
+.userBubble {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--accent-purple), #818cf8);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* AL bubble — left-aligned, white glass */
+.alBubble {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+
+/* Small label above each bubble showing who sent it */
+.senderLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Animated "Thinking..." dots */
+.typing {
+  color: var(--text-muted);
+  font-style: italic;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ── Input area ──────────────────────────────────────────────────────────── */
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 15px;
+  border: 2px solid var(--border);
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: var(--accent-purple);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sendBtn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--accent-purple), #818cf8);
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sendBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Quick-question chips ────────────────────────────────────────────────── */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.chipsLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.chip {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chip:hover {
+  background: #e0e7ff;
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .chatBox {
+    height: 300px;
+  }
+
+  .userBubble,
+  .alBubble {
+    max-width: 90%;
+  }
+
+  .infoCard ol {
+    padding-left: 16px;
+  }
+}

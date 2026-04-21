@@ -1,0 +1,238 @@
+/*
+ * Styles for the ModuleComplete page — shown after a user finishes any
+ * module. Displays the score, a pass/fail status card, an achievement
+ * badge if passed, and action buttons to retry or go back to the list.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+/* Standard app gradient so the completion screen matches every other page */
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 20px;
+}
+
+/* ── Completion card ─────────────────────────────────────────────────────── */
+
+/* Centred white card that shows the score, stars, and buttons */
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: var(--card-blur);
+  border-radius: 30px;
+  padding: 50px 40px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+/* ── Stars row ───────────────────────────────────────────────────────────── */
+
+/* Stars fade and scale in after a short delay for a reveal effect */
+.starsRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.starsRow.visible { opacity: 1; transform: scale(1); }
+
+.star {
+  font-size: 48px;
+  animation: none;
+  display: inline-block;
+}
+
+/* Earned stars pop in one by one (animationDelay set inline) */
+.starEarned {
+  color: var(--accent-amber);
+  animation: starPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Unearned stars are a light grey — visible on the white card */
+.starEmpty { color: var(--border); }
+
+@keyframes starPop {
+  0%   { transform: scale(0) rotate(-30deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0);      opacity: 1; }
+}
+
+/* ── Celebration emoji ───────────────────────────────────────────────────── */
+
+/* Bounces gently to celebrate (or encourage on failure) */
+.confetti {
+  font-size: 60px;
+  animation: bounce 1s ease infinite alternate;
+  margin-bottom: 10px;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
+}
+
+/* ── Title and module tag ────────────────────────────────────────────────── */
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 0 0 15px;
+}
+
+/* Purple pill showing which module was just completed */
+.moduleNameTag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* ── Score card ──────────────────────────────────────────────────────────── */
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+/* Purple circle showing score over total */
+.scoreCircle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.scoreNumber { font-size: 42px; font-weight: bold; color: white; line-height: 1; }
+.scoreTotal { font-size: 16px; color: rgba(255, 255, 255, 0.8); }
+.percentageText { font-size: 28px; font-weight: bold; color: var(--text-secondary); }
+
+/* ── Badge earned panel ──────────────────────────────────────────────────── */
+
+/* Golden box shown when the user passes with 70%+ */
+.badgeEarned {
+  background: linear-gradient(135deg, #fef9c3 0%, #fef3c7 100%);
+  border: 3px solid var(--accent-amber);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  animation: glowIn 0.6s ease;
+}
+
+.badgeIcon { font-size: 48px; margin-bottom: 8px; }
+.badgeText { font-size: 18px; font-weight: bold; color: #92400e; }
+.badgeName { font-size: 16px; color: #a16207; margin-top: 4px; }
+
+@keyframes glowIn {
+  0%   { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Retry message ───────────────────────────────────────────────────────── */
+
+/* Shown when the user doesn't pass — encourages them to try again */
+.retryMsg {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+
+.buttonRow {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 30px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+/* "Back to Dashboard" — solid purple */
+.btnDashboard {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* "More Modules" — outlined purple */
+.btnModules {
+  background: white;
+  color: var(--accent-purple);
+  border: 2px solid var(--accent-purple);
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+
+/* ── Survey prompt ───────────────────────────────────────────────────────── */
+
+.surveyPrompt {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Small ghost button that takes the user to the feedback survey */
+.btnSurvey {
+  background: transparent;
+  color: var(--accent-purple);
+  border: 2px solid var(--accent-purple);
+  font-size: 14px;
+  padding: 10px 24px;
+  min-width: auto;
+}
+
+.btnSurvey:hover { background: rgba(99, 102, 241, 0.06); }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.85) translateY(30px); }
+  100% { opacity: 1; transform: scale(1)    translateY(0); }
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .container  { padding: 30px 20px; }
+  .title      { font-size: 28px; }
+  .buttonRow  { flex-direction: column; }
+}

@@ -1,0 +1,70 @@
+/*
+ * Styles for the Dashboard page — the student's landing page after login.
+ * Layouts the stats row, learning journey, progress breakdown, recent
+ * activity, and achievement badges into a two-column grid.
+ */
+
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--gradient-bg);
+  padding: 30px;
+}
+
+/* ── Layout grid ──────────────────────────────────────────────────────────── */
+
+/* Two-column layout: main content area on the left, sidebar on the right */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 25px;
+  min-height: calc(100vh - 180px);
+}
+
+/* Left-column glass card — slight purple tint to echo the page gradient */
+.card {
+  background: rgba(245, 243, 255, 0.85);
+  backdrop-filter: var(--card-blur);
+  border-radius: var(--card-radius);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Right column stacks its child cards vertically */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Simple loading message shown while data is being fetched */
+.loadingMessage {
+  text-align: center;
+  padding: 4rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.card h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+/* Stack to single column on narrower screens */
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page { padding: 15px; }
+  .card { padding: 20px; }
+}

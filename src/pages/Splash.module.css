@@ -1,0 +1,78 @@
+/*
+ * Styles for the Splash page — the very first screen shown before login,
+ * featuring the ShieldLearn logo, title, and a "Get Started" button.
+ */
+
+.body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #bfdbfe 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.container {
+  text-align: center;
+}
+
+.logoContainer {
+  margin-bottom: 40px;
+}
+
+.welcomeTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcomeSubtitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 40px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lockButton {
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lockButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.4);
+}
+
+.lockButton:active {
+  transform: scale(0.95);
+}
+
+.lockIcon {
+  width: 100px;
+  height: 100px;
+}
+
+.tapHint {
+  margin-top: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .welcomeTitle {
+    font-size: 2rem;
+  }
+
+  .welcomeSubtitle {
+    font-size: 1.2rem;
+  }
+}
